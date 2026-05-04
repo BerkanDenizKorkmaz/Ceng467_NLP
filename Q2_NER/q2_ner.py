@@ -16,6 +16,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 warnings.filterwarnings("ignore")
 
+# ── Set up figures directory ──
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+FIG_DIR = os.path.join(SCRIPT_DIR, "figures")
+os.makedirs(FIG_DIR, exist_ok=True)
+
 SEED = 42
 random.seed(SEED); np.random.seed(SEED)
 import torch; torch.manual_seed(SEED)
@@ -515,8 +520,8 @@ ax.set_xticks(x); ax.set_xticklabels(entity_types)
 ax.set_ylim(0, 1.05); ax.set_ylabel("F1 Score")
 ax.set_title("Per-Entity-Type F1: BiLSTM-CRF vs BERT")
 ax.legend(); plt.tight_layout()
-plt.savefig("ner_entity_f1.png", dpi=150, bbox_inches="tight")
-print("\n[Saved] ner_entity_f1.png")
+plt.savefig(f"{FIG_DIR}/ner_entity_f1.png", dpi=150, bbox_inches="tight")
+print(f"\n[Saved] {FIG_DIR}/ner_entity_f1.png")
 
 # ── Overall comparison bar chart ──
 fig2, ax2 = plt.subplots(figsize=(7, 4))
@@ -530,8 +535,8 @@ ax2.set_xticks(x2); ax2.set_xticklabels(categories)
 ax2.set_ylim(0.7, 1.0); ax2.set_ylabel("Score")
 ax2.set_title("NER Model Comparison")
 ax2.legend(); plt.tight_layout()
-plt.savefig("ner_model_comparison.png", dpi=150, bbox_inches="tight")
-print("[Saved] ner_model_comparison.png")
+plt.savefig(f"{FIG_DIR}/ner_model_comparison.png", dpi=150, bbox_inches="tight")
+print(f"[Saved] {FIG_DIR}/ner_model_comparison.png")
 
 # ─────────────────────────────────────────────
 # 6. ERROR ANALYSIS
@@ -617,8 +622,8 @@ ax3.bar(x3 + 0.2, bert_norm, 0.4, label="BERT",        color="#DD8452")
 ax3.set_xticks(x3); ax3.set_xticklabels(error_cats, rotation=10)
 ax3.set_ylabel("Proportion of Errors"); ax3.set_title("Error Type Distribution")
 ax3.legend(); plt.tight_layout()
-plt.savefig("ner_error_breakdown.png", dpi=150, bbox_inches="tight")
-print("\n[Saved] ner_error_breakdown.png")
+plt.savefig(f"{FIG_DIR}/ner_error_breakdown.png", dpi=150, bbox_inches="tight")
+print(f"\n[Saved] {FIG_DIR}/ner_error_breakdown.png")
 
 # ── Print 5 example errors per model ──
 def show_ner_errors(true_seqs, pred_seqs, raw_split, model_name, n=5):
@@ -680,4 +685,4 @@ DISCUSSION = """
 """
 print(DISCUSSION)
 print("✓ NER pipeline complete.")
-print("  Saved: ner_entity_f1.png  ner_model_comparison.png  ner_error_breakdown.png")
+print(f"  Saved: {FIG_DIR}/ner_entity_f1.png  {FIG_DIR}/ner_model_comparison.png  {FIG_DIR}/ner_error_breakdown.png")

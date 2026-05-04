@@ -15,6 +15,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 warnings.filterwarnings("ignore")
 
+# ── Set up figures directory ──
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+FIG_DIR = os.path.join(SCRIPT_DIR, "figures")
+os.makedirs(FIG_DIR, exist_ok=True)
+
 # ── reproducibility ──
 SEED = 42
 random.seed(SEED)
@@ -403,8 +408,8 @@ for ax, name, preds in zip(axes, model_names_cm, all_preds_cm):
     ax.set_xlabel("Predicted"); ax.set_ylabel("Actual")
 
 plt.tight_layout()
-plt.savefig("confusion_matrices.png", dpi=150, bbox_inches="tight")
-print("\n[Saved] confusion_matrices.png")
+plt.savefig(f"{FIG_DIR}/confusion_matrices.png", dpi=150, bbox_inches="tight")
+print(f"\n[Saved] {FIG_DIR}/confusion_matrices.png")
 
 # ── 6d. Bar chart – Accuracy & Macro-F1 ──
 fig2, ax2 = plt.subplots(figsize=(10, 5))
@@ -419,8 +424,8 @@ ax2.set_xticks(x); ax2.set_xticklabels(labels_bar, rotation=15, ha="right")
 ax2.set_ylim(0.7, 1.0); ax2.set_ylabel("Score")
 ax2.set_title("Model Comparison – Accuracy vs Macro-F1")
 ax2.legend(); plt.tight_layout()
-plt.savefig("model_comparison.png", dpi=150, bbox_inches="tight")
-print("[Saved] model_comparison.png")
+plt.savefig(f"{FIG_DIR}/model_comparison.png", dpi=150, bbox_inches="tight")
+print(f"[Saved] {FIG_DIR}/model_comparison.png")
 
 # ── 6e. Error Analysis – 5 misclassified examples per model ──
 def show_errors(preds, labels, texts, model_name, n=5):
@@ -514,4 +519,4 @@ DISCUSSION = """
 """
 print(DISCUSSION)
 
-print("\n✓ Pipeline complete. Check confusion_matrices.png and model_comparison.png.")
+print(f"\n✓ Pipeline complete. Check {FIG_DIR}/confusion_matrices.png and {FIG_DIR}/model_comparison.png.")
