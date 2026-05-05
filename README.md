@@ -8,14 +8,14 @@ This repository contains the implementations for the Take-Home Midterm.
 ## Environment Setup
 To ensure full reproducibility, please create a virtual environment and install the required dependencies:
 
-\`\`\`bash
+
 # Create and activate a virtual environment
 python -m venv env
 source env/bin/activate  # On Windows use: env\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
-\`\`\`
+
 
 ## Running the Code
 * **Question 1 (Representation Learning):** `python Q1_Classification/q1_classification.py`
