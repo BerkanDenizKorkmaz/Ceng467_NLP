@@ -11,14 +11,15 @@ To ensure full reproducibility, please create a virtual environment and install 
 
 # Create and activate a virtual environment
 py -3.11 -m venv .venv
-# macOS / Linux:
-# source .venv/bin/activate
+
+macOS / Linux:
+source .venv/bin/activate
  
-# Windows (PowerShell):
-# .venv\Scripts\Activate.ps1
-#
-# Windows (CMD):
-# .venv\Scripts\activate.bat
+Windows (PowerShell):
+.venv\Scripts\Activate.ps1
+
+Windows (CMD):
+.venv\Scripts\activate.bat
 
 # Install dependencies
 pip install -r requirements.txt
