@@ -10,7 +10,7 @@ To ensure full reproducibility, please create a virtual environment and install 
 
 
 # Create and activate a virtual environment
-python -m venv env
+py -3.11 -m venv .venv
 source env/bin/activate  # On Windows use: env\Scripts\activate
 
 # Install dependencies
