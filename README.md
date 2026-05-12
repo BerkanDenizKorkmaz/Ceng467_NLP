@@ -10,7 +10,7 @@ To ensure full reproducibility, please create a virtual environment and install 
 
 
 # Create and activate a virtual environment
-py -3.11 -m venv .venv
+py -3.11.9 -m venv .venv
 
 macOS / Linux:
 source .venv/bin/activate
